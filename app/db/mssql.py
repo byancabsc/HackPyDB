@@ -11,7 +11,7 @@ conn_str = (
 def get_connection():
     return pyodbc.connect(conn_str)
 
-def init_db():
+def init_db_mssql():
     try:
         conn = get_connection()
         cursor = conn.cursor()

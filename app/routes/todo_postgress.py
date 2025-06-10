@@ -12,9 +12,7 @@ def adicionar_tarefa():
         return redirect(url_for('auth.login'))
 
     if request.method == 'POST':
-        #titulo = request.form['titulo']
         titulo = request.form.get('titulo')
-        #status = request.form['status']
         status = request.form.get('status')
         
         print(titulo,status)
@@ -49,31 +47,9 @@ def adicionar_tarefa():
         cursor.close()
         conn.close()
 
-    return render_template("tarefas.html", tarefas=tarefas)
+    return render_template("todo_task.html", tarefas=tarefas)
 
-
-
-@todo_bp.route('/concluir/<int:id>', methods=['POST'])
-def concluir_tarefa(id):
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("UPDATE tarefas SET status = 'concluido' WHERE id = %s", (id,))
-    conn.commit()
-    cursor.close()
-    conn.close()
-    return redirect('/adicionar')
-
-@todo_bp.route('/excluir/<int:id>', methods=['POST'])
-def excluir_tarefa(id):
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM tarefas WHERE id = %s", (id,))
-    conn.commit()
-    cursor.close()
-    conn.close()
-    return redirect('/adicionar')
-
-@todo_bp.route('/buscar', methods=['GET'])
+@todo_bp.route('/todo_find', methods=['GET'])
 def buscar():
     
     if "username" not in session:
@@ -97,7 +73,39 @@ def buscar():
         conn.close()
 
     # Retorna dados visíveis — ideal para sqlmap
-    return render_template('buscar.html', tarefas=resultados)
+    return render_template('todo_find.html', tarefas=resultados)
     #return str(resultados)
+
+@todo_bp.route('/todo_concluir/<int:id>', methods=['POST'])
+def concluir_tarefa(id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE tarefas SET status = 'concluido' WHERE id = %s", (id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/todo_find')
+
+@todo_bp.route('/todo_pendente/<int:id>', methods=['POST'])
+def pendente_tarefa(id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("UPDATE tarefas SET status = 'pendente' WHERE id = %s", (id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/todo_find')
+
+@todo_bp.route('/todo_excluir/<int:id>', methods=['POST'])
+def excluir_tarefa(id):
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM tarefas WHERE id = %s", (id,))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return redirect('/todo_find')
+
+
 
     

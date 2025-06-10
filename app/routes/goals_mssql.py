@@ -17,7 +17,7 @@ def add_goal():
     action = request.form.get("action")
 
     if action == "Pesquisar":
-        return redirect(url_for("view_goals"))
+        return redirect(url_for("goal_view"))
 
 
     if request.method == "POST":
@@ -48,13 +48,12 @@ def add_goal():
         finally:
             conn.close()
 
-        #return redirect(url_for("view_goals"))
 
-    return render_template("add_goal.html")
-
+        return render_template("goal_add.html")
 
 
-@goals_bp.route("/view_goals", methods=["GET", "POST"])
+
+@goals_bp.route("/goal_view", methods=["GET", "POST"])
 def view_goals():
     results = []
     term = ""
@@ -85,4 +84,4 @@ def view_goals():
         if conn:
             conn.close()
 
-    return render_template("view_goals.html", results=results, term=term)
+    return render_template("goal_view.html", results=results, term=term)

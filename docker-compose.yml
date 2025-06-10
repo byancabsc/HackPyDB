@@ -23,6 +23,16 @@ services:
       - "1433:1433"
     volumes:
       - mssql_data:/var/opt/mssql
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: vuln_db
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/opt/mysql
 
   web:
     build: .
@@ -42,3 +52,4 @@ services:
 volumes:
   pgdata:
   mssql_data:
+  mysql_data:

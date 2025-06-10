@@ -1,17 +1,18 @@
 import mysql.connector
 
-def get_db_connection():
+def get_connection():
     return mysql.connector.connect(
-        host='db',          # nome do serviço MySQL no Docker Compose
+        host='mysql',          # nome do serviço MySQL no Docker Compose
         user='root',
         password='root',
         database='vuln_db'
     )
 
-def init_db():
+def init_db_mysql():
     conn = None
+    cursor = None
     try:
-        conn = get_db_connection()
+        conn = get_connection()
         cursor = conn.cursor()
 
         cursor.execute('''
@@ -48,6 +49,7 @@ def init_db():
         print(f"[ERRO] Falha ao criar tabelas ou inserir dados: {err}")
 
     finally:
-        if conn:
+        if cursor:
             cursor.close()
+        if conn:
             conn.close()

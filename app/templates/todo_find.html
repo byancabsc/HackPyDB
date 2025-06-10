@@ -27,15 +27,22 @@
                         {{ tarefa[1] }} - <strong>{{ tarefa[2] }}</strong>
                     </span>
                     <div style="display: flex; gap: 10px;">
-                        <form method="POST" action="/concluir/{{ tarefa[0] }}">
+                        <form method="POST" action="/todo_concluir/{{ tarefa[0] }}">
                             <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
-                                ✅ Concluir
+                                 Concluir
                             </button>
                         </form>
 
-                        <form method="POST" action="/excluir/{{ tarefa[0] }}">
+
+                            <form method="POST" action="/todo_pendente/{{ tarefa[0] }}">
+                            <button type="submit" style="background-color: #5e4caf; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                                pendente
+                            </button>
+                        </form>
+
+                        <form method="POST" action="/todo_excluir/{{ tarefa[0] }}">
                             <button type="submit" style="background-color: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
-                                🗑️ Excluir
+                                 Excluir
                             </button>
                         </form>
                     </div>

@@ -1,0 +1,65 @@
+{% extends "template.html" %}
+{% block body %}
+<h2>Status Missões</h2>
+
+<!-- FORMULÁRIO DE BUSCA -->
+<div id="form" class="form-container">
+    <form method="GET" action="/mission_update" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <input class="form-field" type="text" name="q" placeholder="Buscar por título" value="{{ term | default('') }}" required>
+        <button class="add-btn" type="submit"> Buscar</button>
+        <a href="{{ url_for('mission.add_mission') }}">
+            <button type="button" class="add-btn"> Adicionar Tarefa</button>
+        </a>
+    </form>
+</div>
+
+
+<div id="resultados" style="margin-top: 30px;">
+    {% if missions %}
+        <ul class="todo-list">
+            {% for mission in missions %}
+                <li class="todo" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span>
+                        {{ mission[1] }} - <strong>{{ mission[2] }}</strong>
+                    </span>
+                    <div style="display: flex; gap: 10px;">
+                        <form method="POST" action="/concluir_mission/{{ mission[0] }}">
+                            <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                                 Concluir
+                            </button>
+                        </form>
+
+
+                        <form method="POST" action="/pendente_mission/{{ mission[0] }}">
+                            <button type="submit" style="background-color: #5e4caf; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                                pendente
+                            </button>
+                        </form>
+
+                        <form method="POST" action="/excluir_mission/{{ mission[0] }}">
+                            <button type="submit" style="background-color: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                                 Excluir
+                            </button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p style="text-align:center;">Nenhuma missão encontrada.</p>
+    {% endif %}
+</div>
+
+
+<!--
+<h2>Missões</h2>
+<ul>
+    {% for m in mission %}
+        <li><strong>{{ m[1] }}</strong> - {{ m[2] }}</li>
+    {% endfor %}
+</ul>
+
+{% if flag %}
+    <div><strong>FLAG:</strong> {{ flag[0] }}</div>
+{% endif %}
+{% endblock %} -->
