@@ -1,10 +1,16 @@
-{% extends "template.html" %} {% block body %}
+<!--
 
 <h2>Minhas Metas</h2>
-<form method="POST">
-    <input type="text" name="search" placeholder="Buscar por título" value="{{ term }}">
-    <input type="submit" value="Buscar">
-</form>
+<div class="form-container">
+    <form method="POST">
+        <input type="text" name="search" class="form-field" placeholder="Buscar por título" value="{{ term }}" >
+        <input type="submit" class="add-btn" value="Buscar">
+    </form> 
+        <a href="{{ url_for('goals.add_goal') }}">
+        <button type="submit" class="add-btn">Adicioar Tarefa</button>
+    </a>
+
+</div>
 
 {% if results %}
     <ul>
@@ -16,8 +22,56 @@
     <p>Nenhuma meta encontrada.</p>
 {% endif %}
 
-<a href="{{ url_for('goals.add_goal') }}">
-    <button type="submit" class="add-btn">Adicioar Tarefa</button>
-</a>
+
+ -->
+
+{% extends "template.html" %} {% block body %}
+
+
+<h2 class="text-gray-300">Minhas Metas</h2>
+
+<style>
+    .form-container {
+        max-width: 500px;
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #111827;
+        border-radius: 8px;
+    }
+
+    .form-field {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #1F2937;
+        color: #D1D5DB;
+    }
+
+
+</style>
+
+<div class="form-container">
+    <form method="POST">
+        <input type="text" name="search" class="form-field" placeholder="Buscar por título" value="{{ term }}">
+        <div class="button-row">
+            <input type="submit" class="add-btn" value="Buscar">
+            <a href="{{ url_for('goals.add_goal') }}" class="add-btn link-btn">Adicionar Tarefa</a>
+        </div>
+    </form>
+
+
+{% if results %}
+    <ul>
+        {% for goal in results %}
+            <li><b>{{ goal.title }}</b> - Produtividade: {{ goal.productivity_score }} - Pomodoros: {{ goal.pomodoro_count }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p class="text-gray-300">Nenhuma meta encontrada.</p>
+{% endif %}
 
 {% endblock %}
+
+</div>

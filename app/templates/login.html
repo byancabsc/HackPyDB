@@ -1,21 +1,50 @@
 {% extends "template.html" %} {% block body %}
-
-<h2>Estou fazendo alguns teste</h2>
+<h2>Estou fazendo alguns testes</h2>
 <p>login!</p>
 
-<form action="/login" method="POST">
-    Usuário: <input type="text" name="username" id="name" class="form-feild"><br>
-    Senha: <input type="password" name="password" class="form-feild"><br>
-    <button type="submit" class="add-btn" style="display: inline-block; margin-right: 10px;">Login</button>
 
-</form>
+<style>
+    .form-container {
+        max-width: 400px;
+        padding: 20px;
+    }
 
-<form action="{{ url_for('auth.register') }}" method="GET" style="display: inline-block;">
-    <button type="submit" class="add-btn">Cadastrar</button>
-</form>
+    .form-field {
+        display: block;
+        width: 200px;
+        height: 40px;
+        margin-bottom: 10px;
+    }
+
+    .button-row {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .add-btn {
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+</style>
 
 
-<br>
-<br>
+<div class="form-container">
+    <form action="/login" method="POST">
+        <label for="name">Usuário:</label>
+        <input type="text" name="username" id="name" class="form-field">
+        
+        <label for="password">Senha:</label>
+        <input type="password" name="password" id="password" class="form-field">
+        
+        <div class="button-row">
+            <button type="submit" class="add-btn">Login</button>
+        </form> 
+        <form action="{{ url_for('auth.register') }}" method="GET">
+                <button type="submit" class="add-btn">Cadastrar</button>
+        </form>
+        </div>
+    
+</div>
 
 {% endblock %}

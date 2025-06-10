@@ -3,7 +3,7 @@
 {% block body %}
     <h2>Pomodoro Timer</h2>
     <div id="timer" style="font-size: 60px; margin: 20px 0;">25:00</div>
-    <button onclick="startTimer()">Iniciar</button>
+    <button onclick="startTimer()">Iniciar </button>
     <button onclick="resetTimer()">Resetar</button>
 
     <script>
@@ -41,10 +41,10 @@
 
         updateDisplay();
     </script>
-    /*<form method="POST">
-        <input type="text" name="title" placeholder="Nome da Meta" required><br>
-        <input type="number" name="score" placeholder="Nota de Produtividade (0-10)" min="0" max="10" required><br>
+    <form method="POST">
+        <input type="text" name="title" placeholder="Nome da Meta" class="form-feild" required><br>
+        <input type="number" name="score" placeholder="Nota de Produtividade (0-10)" min="0" max="10" class="form-feild" required><br>
         <input type="number" name="pomodoros" placeholder="Qtd. de Pomodoros" min="0" required><br>
         <input type="submit" value="Salvar">
-    </form>*/
+    </form>
 {% endblock %}

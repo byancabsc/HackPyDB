@@ -3,7 +3,7 @@
 <h2>Account Page</h2>
 <p>This is the account page!</p>
 
-
+<div>
 <a href="{{ url_for('goals.add_goal') }}">
     <button type="submit" class="add-btn">Pomodoro</button>
 </a>
@@ -12,14 +12,10 @@
     <button type="submit" class="add-btn">Check List</button>
 </a>
 
-<!-- <a href="{{ url_for('goals.view_goals') }}"> -->
-    <!-- <button type="submit" class="add-btn">visualizar tarefa</button> -->
-<!-- </a> -->
-
+</div>
 <br>
 <h3>Welcome {{username}}</h3>
-<p>Look into the code in app.py to see how the user's name is passed from the previous page(home.html) to this one</p>
-<br>
+
 
 
 {% endblock %}

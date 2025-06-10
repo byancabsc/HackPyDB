@@ -1,6 +1,8 @@
 
 /* Css files (Like this one) are where all the designing of the website is kept. */
 
+
+
 h1,
 h2,
 h3,
@@ -11,8 +13,8 @@ p {
 
 body {
     display: inline;
-    font-family: verdana;
-    background-color: #2C2F33;
+    font-family: 'Inter', sans-serif;
+    background-color: #000000;
 }
 
 :root {
@@ -22,52 +24,126 @@ body {
 .add-btn {
     height: 40px;
     width: 150px;
-    color: #FFFFFF;
-    background-color: #03d603;
-    border: 1px solid #029902;
+    color: #000000;
+    background-color: #edbe00;
+    border: 1px solid #a4a70f;
     border-radius: 5px;
     padding: 10px;
     margin: 10px;
+    align-items: center;
+
 }
 
 .add-btn:hover {
-    color: #029902;
-    background-color: #00ff002f;
-    border: 1px solid #029902;
+    color: #f1f1f1;
+    background-color: #c5d3082f;
+    border: 1px solid #c5d3082f;
     border-radius: 5px;
 }
 
 .add-btn:focus {
-    color: #029902;
-    background-color: #00ff002f;
-    border: 1px solid #029902;
+    color: #a4a70f;
+    background-color: #a4a70f;
+    border: 1px solid #a4a70f;
     border-radius: 5px;
+
 }
 
-.form-feild {
-    height: 40px;
-    width: 200px;
-    border: 1px solid #99AAB5;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    background-color: #2C2F33;
+.form-field {
+        display: block;
+        width: 100%;
+        margin-bottom: 30px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #1F2937; /* dark background (gray-800) */
+        color: #D1D5DB; /* text-gray-300 */
 }
+
+.todo {
+        background-color: #374151;
+        color: #E5E7EB;
+        margin: 10px 0;
+        padding: 10px 15px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+}
+
+.todo-list {
+        list-style-type: none;
+        padding: 0;
+        max-width: 600px;
+        margin: 0 auto;
+}
+    .form-container {
+        max-width: 500px;
+        margin-bottom: 20px;
+        padding: 20px;
+        background-color: #111827;
+        border-radius: 8px;
+    }
+
+.btn-nav {
+
+    color: #ffffff;
+    border-radius: 5px;
+
+
+
+}
+
 
 nav {
-    background-color: #333;
-    padding: 5px;
+    background-color: #000000;
+
+
 }
 
 nav ul {
     display: flex;
-    justify-content: center;
+    justify-content: right;
     align-items: center;
-    padding: 0;
-    margin: 0;
+    box-shadow: 0 4px 15px 0 #a4a70f;
+    padding: 20;   
 }
 
 nav li {
     margin: 0 20px;
     display: inline-block;
+    color: white;
+
 }
+
+    .check-btn, .trash-btn {
+        background-color: transparent;
+        border: none;
+        color: #FBBF24;
+        font-size: 1.2em;
+        margin-left: 10px;
+        cursor: pointer;
+    }
+
+    .trash-btn {
+        color: #EF4444;
+    }
+
+    .check-btn:hover {
+        color: #D97706;
+    }
+
+    .trash-btn:hover {
+        color: #DC2626;
+    }
+
+    h2 {
+        text-align: center;
+        color: #FACC15;
+    }
+
+    a button {
+        display: block;
+        margin: 20px auto;
+    }

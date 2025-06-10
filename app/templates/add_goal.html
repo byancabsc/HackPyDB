@@ -1,9 +1,40 @@
 {% extends "template.html" %} {% block body %}
 
-<h2>Pomodoro Timer</h2>
-<div id="timer" style="font-size: 60px; margin: 20px 0;">25:00</div>
-<button onclick="startTimer()">Iniciar </button>
-<button onclick="resetTimer()">Resetar </button><br>
+
+<h2 class="text-gray-300">Pomodoro Timer</h2>
+
+<style>
+    #timer {
+        font-size: 60px;
+        margin: 20px 0;
+        color: #FACC15;
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+    }
+</style>
+
+<div class="form-container">
+    <div id="timer">25:00</div>
+
+    <div class="button-row">
+        <button onclick="startTimer()" class="add-btn">Iniciar</button>
+        <button onclick="resetTimer()" class="add-btn">Resetar</button>
+    </div>
+
+    <form method="POST">
+        <input type="text" name="title" placeholder="Nome da Meta" class="form-field" required>
+        <input type="number" name="score" placeholder="Nota de Produtividade (0-10)" class="form-field" min="0" max="10" required>
+        <input type="number" name="pomodoros" placeholder="Qtd. de Pomodoros" class="form-field" min="0" required>
+
+        <div class="button-row">
+            <input type="submit" value="Salvar" class="add-btn">
+            <a href="{{ url_for('goals.view_goals') }}" class="add-btn">Pesquisar Tarefa</a>
+        </div>
+    </form>
+</div>
 
 <script>
     let totalTime = 25 * 60;
@@ -16,7 +47,7 @@
         document.getElementById("timer").innerText =
             `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
     }
-    
+
     function startTimer() {
         if (running) return;
         running = true;
@@ -37,19 +68,6 @@
         updateDisplay();
         running = false;
     }
-    </script>
-
-    <form method="POST">
-    <br><br>
-    <input type="text" name="title" placeholder="Nome da Meta" required>
-    <input type="number" name="score" placeholder="Nota de Produtividade (0-10)" min="0" max="10" required><br>
-    <input type="number" name="pomodoros" placeholder="Qtd. de Pomodoros" min="0" required><br>
-    <input type="submit" value="Salvar" class="add-btn">
-    
-    </form>
-    <a href="{{ url_for('goals.view_goals') }}">
-        <button type="submit" class="add-btn">pesquisar tarefa</button>
-    </a>
-
+</script>
 
 {% endblock %}

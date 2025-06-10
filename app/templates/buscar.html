@@ -1,45 +1,50 @@
-{% extends "template.html" %} 
+{% extends "template.html" %}
 {% block body %}
 
+<!-- CABEÇALHO -->
 <div id="header">
     <h2 style="text-align:center;">Buscar Metas</h2>
 </div>
 
 <!-- FORMULÁRIO DE BUSCA -->
-<div id="form">
-    <form method="GET" action="/buscar">
-        <input class="todo-input" type="text" name="q" placeholder="Buscar por título" value="{{ term }}" required>
-        <button class="todo-btn" type="submit">Buscar</button>
+<div id="form" class="form-container">
+    <form method="GET" action="/buscar" style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <input class="form-field" type="text" name="q" placeholder="Buscar por título" value="{{ term | default('') }}" required>
+        <button class="add-btn" type="submit"> Buscar</button>
+        <a href="{{ url_for('todo.adicionar_tarefa') }}">
+            <button type="button" class="add-btn"> Adicionar Tarefa</button>
+        </a>
     </form>
 </div>
 
 <!-- RESULTADOS -->
-<div id="myUnOrdList">
+<div id="resultados" style="margin-top: 30px;">
     {% if tarefas %}
         <ul class="todo-list">
             {% for tarefa in tarefas %}
-                <li class="todo">
-                    {{ tarefa[1] }} - <strong>{{ tarefa[2] }}</strong>
+                <li class="todo" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span>
+                        {{ tarefa[1] }} - <strong>{{ tarefa[2] }}</strong>
+                    </span>
+                    <div style="display: flex; gap: 10px;">
+                        <form method="POST" action="/concluir/{{ tarefa[0] }}">
+                            <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                                ✅ Concluir
+                            </button>
+                        </form>
 
-                    <form method="POST" action="/concluir/{{ tarefa[0] }}" style="display:inline;">
-                        <button type="submit" class="check-btn"><i class="fas fa-check"></i></button>
-                    </form>
-
-                    <form method="POST" action="/excluir/{{ tarefa[0] }}" style="display:inline;">
-                        <button type="submit" class="trash-btn"><i class="fas fa-trash"></i></button>
-                    </form>
+                        <form method="POST" action="/excluir/{{ tarefa[0] }}">
+                            <button type="submit" style="background-color: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
+                                🗑️ Excluir
+                            </button>
+                        </form>
+                    </div>
                 </li>
             {% endfor %}
         </ul>
     {% else %}
         <p style="text-align:center;">Nenhuma tarefa encontrada.</p>
     {% endif %}
-</div>
-
-<!-- BOTÃO PARA ADICIONAR TAREFA -->
-<a href="{{ url_for('todo.adicionar_tarefa') }}">
-    <button  type="submit" class="add-btn">Adicionar Tarefas</button>
-</a>
 </div>
 
 {% endblock %}
