@@ -6,7 +6,7 @@ import pyodbc
 
 goals_bp = Blueprint('goals', __name__)
 
-@goals_bp.route("/add_goal", methods=["GET", "POST"])
+@goals_bp.route("/goal_add", methods=["GET", "POST"])
 
 def add_goal():
 
@@ -14,10 +14,10 @@ def add_goal():
     if "username" not in session:
         return redirect(url_for('login'))
 
-    action = request.form.get("action")
+    ''''action = request.form.get("action")
 
     if action == "Pesquisar":
-        return redirect(url_for("goal_view"))
+        return redirect(url_for("goal_view"))'''
 
 
     if request.method == "POST":
@@ -50,6 +50,7 @@ def add_goal():
 
 
         return render_template("goal_add.html")
+    return render_template("goal_add.html")
 
 
 
