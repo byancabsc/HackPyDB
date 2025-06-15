@@ -45,16 +45,9 @@ pip install -r requirements.txt
 python app.py
 ```
 
-Acesse via: http://localhost:5000
+Acesse via: http://localhost
 
-🧪 Exemplos de SQLi já implementados
-' OR '1'='1 -- → Login sem senha
-
-' UNION SELECT null, version() -- → Enumerar versão do banco
-
-1' AND IF(SUBSTRING(user(),1,1)='r', SLEEP(5), 0) -- → Time-based (MySQL)
-
-🔭 Próximas Funcionalidades (em andamento)
+### 🔭 Próximas Funcionalidades (em andamento)
  Labs organizados por nível: básico, intermediário, avançado
 
  SQLi Cega (Blind SQL Injection)
@@ -71,7 +64,7 @@ Acesse via: http://localhost:5000
 
  Ranking de usuários e histórico de tentativas
 
-📚 Público-alvo
+### 📚 Público-alvo
 Estudantes de segurança ofensiva e CTF
 
 Instrutores de pentest e hacking ético
@@ -80,7 +73,7 @@ Desenvolvedores querendo aprender sobre falhas em SQL
 
 Profissionais que desejam entender vetores comuns de ataque a aplicações web
 
-🧑‍💻 Autor
+### 🧑‍💻 Autor
 Gabriel Won-Held
 GitHub | LinkedIn
 
