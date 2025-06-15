@@ -1,6 +1,6 @@
-# 🛡️ SQLiWeb – Plataforma Educativa de SQL Injection
+# 🛡️ HackPyDB – Plataforma Educativa de SQL Injection
 
-**SQLiWeb** é uma aplicação web vulnerável criada para fins **educacionais**, com o objetivo de ensinar e praticar **SQL Injection (SQLi)** nos três principais sistemas de gerenciamento de banco de dados:
+**HackPyDB** é uma aplicação web vulnerável criada para fins **educacionais**, com o objetivo de ensinar e praticar **SQL Injection (SQLi)** nos três principais sistemas de gerenciamento de banco de dados:
 
 - ✅ **MySQL**
 - ✅ **PostgreSQL**
@@ -30,8 +30,8 @@
 ### Passos
 
 ```bash
-git clone https://github.com/gabrielwonheld/sqliweb
-cd sqliweb
+git clone https://github.com/gabrielwonheld/hackpydb
+cd hackpydb
 
 # Ativando ambiente virtual (opcional)
 python3 -m venv venv
