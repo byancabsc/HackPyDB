@@ -6,4 +6,4 @@ home_bp = Blueprint('/', __name__)
 
 @home_bp.route("/")
 def home():
-    return  render_template("home.html")
+    return redirect(url_for('auth.login'))
