@@ -1,18 +1,29 @@
 version: '3.8'
 
 services:
-  postgres:
+  postgres_app:
     image: postgres:13
-    container_name: postgres
+    container_name: postgres_system
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pyhackdb_system_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgsystem:/var/lib/postgresql/data
+  
+  postgres_vuln:
+    image: postgres:13
+    container_name: postgres_vuln
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: todo_db
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
-
+      - pgvuln:/var/lib/postgresql/data
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2019-latest
     container_name: sqlserver
@@ -42,14 +53,24 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - postgres
+      - postgres_app
     environment:
-      DB_HOST: postgres
-      DB_NAME: todo_db
+      # DB da aplicação
+      DB_HOST: postgres_app
+      DB_PORT: 5432
+      DB_NAME: pyhackdb_system_db
       DB_USER: postgres
       DB_PASS: postgres
 
+      # DB vulnerável
+      VULN_DB_HOST: postgres_vuln
+      VULN_DB_PORT: 5433
+      VULN_DB_NAME: todo_db
+      VULN_DB_USER: postgres
+      VULN_DB_PASS: postgres
+
 volumes:
-  pgdata:
+  pgsystem:
+  pgvuln:
   mssql_data:
   mysql_data:

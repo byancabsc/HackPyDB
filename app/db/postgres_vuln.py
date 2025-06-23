@@ -3,14 +3,14 @@ import os
 
 def get_db_connection():
     return psycopg2.connect(
-        host=os.getenv('DB_HOST', 'postgres'),  # O nome correto do serviço no docker-compose
+        host=os.getenv('DB_HOST', 'postgres_vuln'),  # O nome correto do serviço no docker-compose
         database=os.getenv('DB_NAME', 'todo_db'),  # O nome do banco de dados
         user=os.getenv('DB_USER', 'postgres'),  # O usuário do banco de dados
         password=os.getenv('DB_PASS', 'postgres'),  # A senha do banco de dados
-        port=5432  # A porta do PostgreSQL
+        port=int(os.getenv('DB_PORT', 5433))
     )
 
-def init_db_postgres():
+def init_db_postgres_vuln():
     conn = get_db_connection()
     cur = conn.cursor()
 

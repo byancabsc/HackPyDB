@@ -1,13 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 import pyodbc
-from ..db.mssql import conn_str
+from ..db.init_pyhackdb import get_app_db_connection
 
 auth_bp = Blueprint('auth', __name__)
 
-
-'''@auth_bp.route("/")
-def home():
-    return redirect(url_for("auth.login"))'''
 
 @auth_bp.route("/login", methods=["GET", "POST"])
 def login():
@@ -17,7 +13,7 @@ def login():
         password = request.form["password"]
 
         try:
-            conn = pyodbc.connect(conn_str)
+            conn = get_app_db_connection()
             cursor = conn.cursor()
             query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
             print("[DEBUG] Query:", query)
@@ -44,7 +40,7 @@ def register():
         email = request.form["email"]
 
         try:
-            conn = pyodbc.connect(conn_str)
+            conn = get_app_db_connection()
             cursor = conn.cursor()
             cursor.execute("INSERT INTO users (username, password, email) VALUES (?, ?, ?)", (username, password, email))
             conn.commit()

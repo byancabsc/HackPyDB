@@ -1,5 +1,5 @@
 from flask import Blueprint, request, redirect, render_template, session, url_for
-from app.db.postgressql import get_db_connection
+from app.db.postgres_vuln import get_db_connection
 
 
 
