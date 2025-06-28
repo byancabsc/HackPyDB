@@ -3,19 +3,19 @@
 <h2>Nova Missão</h2>
 
 
-<form method="POST" class="form-container">
+<form method="POST" class="container">
     <input type="text" name="titulo" class="form-field" placeholder="Nome da missão" required>
     <select name="status" class="form-field" required>
         <option value="ativa">Ativa</option>
         <option value="inativa">Inativa</option>
     </select>
-    <button type="submit" class="add-btn">Adicionar Missão</button>
+    <button type="submit" class="submit-btn">Adicionar Missão</button>
     <a href="{{ url_for('mission.mission_update') }}">
-        <button type="button" class="add-btn">Pesquisar Missões</button>
+        <button type="button" class="submit-btn">Pesquisar Missões</button>
     </a>
 </form>
 
-<div id="myUnOrdList">
+<!--<div id="myUnOrdList">
     {% if missions %}
         <ul class="todo-list" style="list-style: none; padding: 0;">
             {% for mission in missions %}
@@ -28,5 +28,5 @@
         <p style="text-align:center;">Nenhuma missão adicionada ainda.</p>
     {% endif %}
 </div>
-
+-->
 {% endblock %}

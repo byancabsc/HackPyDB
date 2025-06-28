@@ -3,18 +3,18 @@
 <h2>Status Missões</h2>
 
 <!-- FORMULÁRIO DE BUSCA -->
-<div id="form" class="form-container">
-    <form method="GET" action="/mission_update" style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <input class="form-field" type="text" name="q" placeholder="Buscar por título" value="{{ term | default('') }}" required>
-        <button class="add-btn" type="submit"> Buscar</button>
+<div id="form" class="container">
+    <form method="GET" action="/mission_update">
+        <input class="form-field" type="text" name="q" placeholder="Buscar por título" value="{{ term | default('') }}">
+        <button  type="submit" class="submit-btn"> Buscar </button><br>
         <a href="{{ url_for('mission.add_mission') }}">
-            <button type="button" class="add-btn"> Adicionar Tarefa</button>
+            <a type="button" class="link"> Adicionar Tarefa</a>
         </a>
     </form>
 </div>
 
 
-<div id="resultados" style="margin-top: 30px;">
+<div id="resultados" class="container" style="margin-top: 30px;">
     {% if missions %}
         <ul class="todo-list">
             {% for mission in missions %}
