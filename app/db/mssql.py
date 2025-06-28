@@ -17,24 +17,12 @@ def init_db_mssql():
         cursor = conn.cursor()
 
         cursor.execute('''
-            IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='users' AND xtype='U')
-            CREATE TABLE users (
-                id INT IDENTITY(1,1) PRIMARY KEY,
-                username NVARCHAR(255) UNIQUE NOT NULL,
-                password NVARCHAR(255) NOT NULL,
-                email NVARCHAR(255) NOT NULL
-            )
-        ''')
-
-        cursor.execute('''
             IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='goals' AND xtype='U')
             CREATE TABLE goals (
                 id INT IDENTITY(1,1) PRIMARY KEY,
-                user_id INT,
                 title NVARCHAR(255),
                 productivity_score INT,
-                pomodoro_count INT,
-                FOREIGN KEY (user_id) REFERENCES users(id)
+                pomodoro_count INT
             )
         ''')
 

@@ -12,12 +12,8 @@ def add_goal():
 
 
     if "username" not in session:
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
 
-    ''''action = request.form.get("action")
-
-    if action == "Pesquisar":
-        return redirect(url_for("goal_view"))'''
 
 
     if request.method == "POST":
@@ -29,25 +25,22 @@ def add_goal():
             #conn = pyodbc.connect(conn_str)
             conn = get_connection()
             cursor = conn.cursor()
-
             # Pegando user_id de forma segura
             cursor.execute("SELECT id FROM users WHERE username = ?", session["username"])
             user = cursor.fetchone()
 
-            if user:
                 # Injeção possível aqui se não usar parâmetros
-                query = f"""
-                    INSERT INTO goals (user_id, title, productivity_score, pomodoro_count)
-                    VALUES ({user.id}, '{title}', {score}, {pomodoros})
+            query = f"""
+                    INSERT INTO goals (title, productivity_score, pomodoro_count)
+                    VALUES ('{title}', {score}, {pomodoros})
                 """
-                print("[DEBUG] Query:", query)
-                cursor.execute(query)
-                conn.commit()
+            print("[DEBUG] Query:", query)
+            cursor.execute(query)
+            conn.commit()
         except Exception as e:
             return f"<h3>Erro: {str(e)}</h3>", 500
         finally:
             conn.close()
-
 
         return render_template("goal_add.html")
     return render_template("goal_add.html")
@@ -60,12 +53,13 @@ def view_goals():
     term = ""
     conn = None
     if "username" not in session:
-        return redirect(url_for('login'))
+        return redirect(url_for('auth.login'))
 
     if request.method == "POST":
         term = request.form["search"]
     
     try:
+        
         #conn = pyodbc.connect(conn_str)
         conn = get_connection()
         cursor = conn.cursor()
@@ -79,10 +73,11 @@ def view_goals():
         print("[DEBUG] Query:", query)
         cursor.execute(query)
         results = cursor.fetchall()
+        print(results)
     except Exception as e:
         return f"<h3>Erro: {str(e)}</h3>", 500
     finally:
         if conn:
             conn.close()
-
+    print(term)
     return render_template("goal_view.html", results=results, term=term)

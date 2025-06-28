@@ -15,9 +15,9 @@ def login():
         try:
             conn = get_app_db_connection()
             cursor = conn.cursor()
-            query = f"SELECT * FROM users WHERE username = '{username}' AND password = '{password}'"
-            print("[DEBUG] Query:", query)
-            cursor.execute(query)
+            query = "SELECT * FROM users WHERE username = %s AND password = %s"
+            print("[DEBUG] Query segura executada.")
+            cursor.execute(query, (username, password))
             user = cursor.fetchone()
             if user:
                 session["username"] = username
@@ -38,11 +38,13 @@ def register():
         username = request.form["username"]
         password = request.form["password"]
         email = request.form["email"]
+        print(email, username, password)
 
         try:
             conn = get_app_db_connection()
             cursor = conn.cursor()
-            cursor.execute("INSERT INTO users (username, password, email) VALUES (?, ?, ?)", (username, password, email))
+            query = "INSERT INTO users (username, password, email) VALUES (%s, %s, %s)"
+            cursor.execute(query, (username, password, email))
             conn.commit()
             return redirect(url_for("auth.login"))
         except pyodbc.IntegrityError:
@@ -53,7 +55,6 @@ def register():
             conn.close()
 
     return render_template("register.html")
-
 
 @auth_bp.route("/account", methods=["GET"])
 def account():

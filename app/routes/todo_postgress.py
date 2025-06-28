@@ -5,7 +5,7 @@ from app.db.postgres_vuln import get_db_connection
 
 todo_bp = Blueprint('todo', __name__)
 
-@todo_bp.route('/adicionar', methods=['GET', 'POST'])
+@todo_bp.route('/todo_add', methods=['GET', 'POST'])
 def adicionar_tarefa():
     
     if "username" not in session:
@@ -30,9 +30,8 @@ def adicionar_tarefa():
             cursor.close()
             conn.close()
         
-        #return f"Tarefa adicionada com título: {titulo} e status: {status}"
 
-        return redirect('/adicionar')  # <- ESSE RETURN TEM QUE EXISTIR
+        return redirect('/todo_add')  # <- ESSE RETURN TEM QUE EXISTIR
 
     # GET: renderiza a lista
     try:

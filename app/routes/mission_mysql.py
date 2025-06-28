@@ -5,6 +5,12 @@ mission_bp = Blueprint('mission', __name__)
 
 @mission_bp.route('/mission_add', methods=['GET', 'POST'])
 def add_mission():
+
+    if "username" not in session:
+
+        return redirect(url_for("auth.login"))
+
+
     if request.method == 'POST':
         titulo = request.form.get('titulo')
         status = request.form.get('status')
@@ -78,6 +84,10 @@ def mission_update():
 
 @mission_bp.route('/concluir_mission/<int:id>', methods=['POST'])
 def concluir_mission(id):
+
+    if "username" not in session:
+        return redirect(url_for("auth.login"))
+
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("UPDATE missions SET status = 'concluido' WHERE id = %s", (id,))
@@ -88,6 +98,10 @@ def concluir_mission(id):
 
 @mission_bp.route('/pendente_mission/<int:id>', methods=['POST'])
 def pendente_mission(id):
+
+    if "username" not in session:
+        return redirect(url_for("auth.login"))
+    
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("UPDATE missions SET status = 'pendente' WHERE id = %s", (id,))
@@ -98,6 +112,8 @@ def pendente_mission(id):
 
 @mission_bp.route('/excluir_mission/<int:id>', methods=['POST'])
 def excluir_mission(id):
+    if "username" not in session:
+        return redirect(url_for("auth.login"))
     conn = get_connection()
     cursor = conn.cursor()
     cursor.execute("DELETE FROM missions WHERE id = %s", (id,))
@@ -105,4 +121,3 @@ def excluir_mission(id):
     cursor.close()
     conn.close()
     return redirect('/mission_update')
-
