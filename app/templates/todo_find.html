@@ -1,57 +1,48 @@
 {% extends "template.html" %}
 {% block body %}
 
-<!-- CABEÇALHO -->
-<div id="header">
-    <h2 style="text-align:center;">Buscar Metas</h2>
-</div>
+<link rel="stylesheet" href="{{ url_for('static', filename='goal.css') }}">
 
-<!-- FORMULÁRIO DE BUSCA -->
-<div id="form" class="form-container">
-    <form method="GET" action="/buscar" style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <input class="form-field" type="text" name="q" placeholder="Buscar por título" value="{{ term | default('') }}" required>
-        <button class="add-btn" type="submit"> Buscar</button>
-        <a href="{{ url_for('todo.adicionar_tarefa') }}">
-            <button type="button" class="add-btn"> Adicionar Tarefa</button>
-        </a>
+<h2>Minhas Tarefas</h2>
+
+<div class="container">
+    <!-- FORMULÁRIO DE BUSCA -->
+    <form method="GET" action="{{ url_for('todo.buscar') }}">
+        <input class="form-field" type="text" name="q" placeholder="Buscar por título" value="{{ term | default('') }}">
+        <div class="button-row">
+            <input type="submit" class="submit-btn" value="Buscar">
+            <a href="{{ url_for('todo.adicionar_tarefa') }}" class="link">Adicionar Tarefa</a>
+        </div>
     </form>
-</div>
 
-<!-- RESULTADOS -->
-<div id="resultados" style="margin-top: 30px;">
-    {% if tarefas %}
-        <ul class="container">
+    <!-- RESULTADOS -->
+    <div class="table-list">
+        {% if tarefas %}
             {% for tarefa in tarefas %}
-                <li class="todo" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                    <span>
-                        {{ tarefa[1] }} - <strong>{{ tarefa[2] }}</strong>
-                    </span>
-                    <div style="display: flex; gap: 10px;">
+                <div class="table-item">
+                    <div class="table-title">
+                        {{ tarefa[1] }}
+                    </div>
+                    <div class="table-details">
+                        Status: <strong>{{ tarefa[2] }}</strong>
+                    </div>
+                    <div class="button-row" style="justify-content: flex-start; gap: 10px; margin-top: 10px;">
                         <form method="POST" action="/todo_concluir/{{ tarefa[0] }}">
-                            <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
-                                 Concluir
-                            </button>
+                            <button type="submit" class="submit-btn" style="background-color: #4CAF50;">Concluir</button>
                         </form>
-
-
-                            <form method="POST" action="/todo_pendente/{{ tarefa[0] }}">
-                            <button type="submit" style="background-color: #5e4caf; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
-                                pendente
-                            </button>
+                        <form method="POST" action="/todo_pendente/{{ tarefa[0] }}">
+                            <button type="submit" class="submit-btn" style="background-color: #5e4caf;">Pendente</button>
                         </form>
-
                         <form method="POST" action="/todo_excluir/{{ tarefa[0] }}">
-                            <button type="submit" style="background-color: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">
-                                 Excluir
-                            </button>
+                            <button type="submit" class="submit-btn" style="background-color: #f44336;">Excluir</button>
                         </form>
                     </div>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
-    {% else %}
-        <p style="text-align:center;">Nenhuma tarefa encontrada.</p>
-    {% endif %}
+        {% else %}
+            <p class="table-empty">Nenhuma tarefa encontrada.</p>
+        {% endif %}
+    </div>
 </div>
 
 {% endblock %}

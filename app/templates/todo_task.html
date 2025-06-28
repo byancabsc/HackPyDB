@@ -1,4 +1,4 @@
-{% extends "template.html" %} 
+{% extends "template.html" %}
 {% block body %}
 
 <!-- CABEÇALHO -->
@@ -7,34 +7,30 @@
 </div>
 
 <!-- FORMULÁRIO DE ADIÇÃO -->
-<div class="form-container" style="margin-bottom: 20px;">
-    <form method="POST" action="/adicionar" style="display: flex; gap: 10px; flex-wrap: wrap;">
+<div class="container" style="margin-bottom: 20px;">
+    <form id="taskForm" method="POST" action="/todo_add" style="display: flex; flex-direction: column; gap: 15px; align-items: center;">
         <input type="text" name="titulo" placeholder="Título da tarefa" class="form-field" required>
+        
         <select name="status" class="form-field" required>
             <option value="pendente">Pendente</option>
             <option value="concluido">Concluído</option>
         </select>
-        <button class="add-btn" type="submit">Adicionar</button>
-
-        <a href="{{ url_for('todo.buscar') }}">
-            <button type="button" class="add-btn">Pesquisar Tarefas</button>
-        </a>
+        
+        <div>
+            <input type="submit" class="submit-btn" value="Adicionar">
+        </div>
+        <a href="{{ url_for('todo.buscar') }}" class="link" style="align-self: center;">Pesquisar Tarefa</a>
     </form>
 </div>
 
-<!-- LISTA DE TAREFAS -->
-<div id="myUnOrdList">
-    {% if tarefas %}
-        <ul class="todo-list" style="list-style: none; padding: 0;">
-            {% for tarefa in tarefas %}
-                <li class="todo">
-                    {{ tarefa[1] }} - <strong>{{ tarefa[2] }}</strong>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p style="text-align:center;">Nenhuma tarefa adicionada ainda.</p>
-    {% endif %}
-</div>
+<!-- SCRIPT DE CONFIRMAÇÃO -->
+<script>
+  document.getElementById('taskForm').addEventListener('submit', function(event) {
+    const confirmAction = confirm("Deseja realmente adicionar esta tarefa?");
+    if (!confirmAction) {
+      event.preventDefault(); // Cancela o envio
+    }
+  });
+</script>
 
 {% endblock %}
