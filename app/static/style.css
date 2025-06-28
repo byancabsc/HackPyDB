@@ -1,149 +1,178 @@
-
-/* Css files (Like this one) are where all the designing of the website is kept. */
-
-
-
-h1,
-h2,
-h3,
-h4,
-p {
-    font-family: verdana;
-}
-
-body {
-    display: inline;
-    font-family: 'Inter', sans-serif;
-    background-color: #121212;
-}
-
 :root {
-    color: #d5e0e7;
+  --bg: #ffffff;
+  --bg-panel: #f1f1f1;
+  --text: #121212;
+  --text-muted: #555;
+  --accent: #38d39f;
+  --accent-hover: #2fa981;
+  --input-bg: #e5e5e5;
+  --button-bg: #edbe00;
+  --button-hover: #c7a600;
+  --timer-display: #f1f1f1
 }
 
-.add-btn {
-    height: 40px;
-    width: 150px;
-    color: #000000;
-    background-color: #edbe00;
-    border: 1px solid #a4a70f;
-    border-radius: 5px;
-    padding: 10px;
-    margin: 10px;
-    align-items: center;
-
+[data-theme="dark"] {
+  --bg: #121212;
+  --bg-panel: #1f1f1f;
+  --text: #f5f5f5;
+  --text-muted: rgba(177, 177, 177, 0.4);
+  --accent: #38d39f;
+  --accent-hover: #2fa981;
+  --input-bg: #1f1f1f;
+  --button-bg: #38d39f;
+  --button-hover: #2fa981;
+  --timer-display: #f1f1f1;
 }
 
-.add-btn:hover {
-    color: #f1f1f1;
-    background-color: #c5d3082f;
-    border: 1px solid #c5d3082f;
-    border-radius: 5px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.add-btn:focus {
-    color: #a4a70f;
-    background-color: #a4a70f;
-    border: 1px solid #a4a70f;
-    border-radius: 5px;
+html, body {
+  min-height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+.container {
+  background-color: var(--bg-panel);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+  margin: 40px auto; /* isso centraliza horizontalmente */
+}
 
+h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin: 10px 0 5px;
+  text-align: left;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--button-bg);
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--button-hover);
+}
+
+.submit-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* espaçamento entre os botões */
+  margin-top: 10px;
+}
+
+.toggle-theme {
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 20px;
+  }
 }
 
 .form-field {
-        display: block;
-        width: 100%;
-        margin-bottom: 30px;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #1F2937; /* dark background (gray-800) */
-        color: #D1D5DB; /* text-gray-300 */
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: var(--input-bg);
+  color: var(--text);
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
 }
 
-.todo {
-        background-color: #374151;
-        color: #E5E7EB;
-        margin: 10px 0;
-        padding: 10px 15px;
-        border-radius: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
+.form-field:focus {
+  outline: none;
+  box-shadow: 0 0 6px var(--accent);
 }
 
-.todo-list {
-        list-style-type: none;
-        padding: 0;
-        max-width: 600px;
-        margin: 0 auto;
-}
-    .form-container {
-        max-width: 500px;
-        margin-bottom: 20px;
-        padding: 20px;
-        background-color: #111827;
-        border-radius: 8px;
-    }
-
-.btn-nav {
-
-    color: #ffffff;
-    border-radius: 5px;
-
-
-
+.link {
+  margin-top: 20px;
+  color: #38d39f;
+  font-size: 14px;
+  text-decoration: none;
 }
 
-
-nav {
-    background-color: #121212;
-
-
+.link:hover {
+  text-decoration: underline;
 }
 
-nav ul {
-    display: flex;
-    justify-content: right;
-    align-items: center;
-    box-shadow: 0 4px 15px 0 #a4a70f;
-    padding: 20;   
+.timer-display {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--timer);
+    font-family: 'Courier New', Courier, monospace;
 }
 
-nav li {
-    margin: 0 20px;
-    display: inline-block;
-    color: white;
-
+.table-list {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-    .check-btn, .trash-btn {
-        background-color: transparent;
-        border: none;
-        color: #FBBF24;
-        font-size: 1.2em;
-        margin-left: 10px;
-        cursor: pointer;
-    }
+.table-item {
+  background-color: var(--bg-panel);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 15px 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
-    .trash-btn {
-        color: #EF4444;
-    }
+.table-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
 
-    .check-btn:hover {
-        color: #D97706;
-    }
+.table-title {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 5px;
+}
 
-    .trash-btn:hover {
-        color: #DC2626;
-    }
+.table-details {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
 
-    h2 {
-        text-align: center;
-        color: #FACC15;
-    }
-
-    a button {
-        display: block;
-        margin: 20px auto;
-    }
+.table-empty {
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 20px;
+  font-style: italic;
+}

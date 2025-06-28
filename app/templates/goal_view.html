@@ -1,50 +1,31 @@
-{% extends "template.html" %} {% block body %}
+{% extends "template.html" %}
+{% block body %}
 
-
-<h2 class="text-gray-300">Minhas Metas</h2>
-
-<style>
-    .form-container {
-        max-width: 500px;
-        margin-bottom: 20px;
-        padding: 20px;
-        background-color: #111827;
-        border-radius: 8px;
-    }
-
-    .form-field {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        background-color: #1F2937;
-        color: #D1D5DB;
-    }
-
-
-</style>
-
-<div class="form-container">
+<h2>Minhas Metas</h2>
+ <link rel="stylesheet" href="{{ url_for('static', filename='goal.css') }}">
+<div class="container">
     <form method="POST">
         <input type="text" name="search" class="form-field" placeholder="Buscar por título" value="{{ term }}">
         <div class="button-row">
-            <input type="submit" class="add-btn" value="Buscar">
-            <a href="{{ url_for('goals.add_goal') }}" class="add-btn link-btn">Adicionar Tarefa</a>
+            <input type="submit" class="submit-btn" value="Buscar">
+            <a href="{{ url_for('goals.add_goal') }}" class="link">Adicionar Tarefa</a>
         </div>
     </form>
 
-
-{% if results %}
-    <ul>
+<div class="table-list">
+    {% if results %}
         {% for goal in results %}
-            <li><b>{{ goal.title }}</b> - Produtividade: {{ goal.productivity_score }} - Pomodoros: {{ goal.pomodoro_count }}</li>
+            <div class="table-item">
+                <div class="table-title"><strong>{{ goal.title }}</strong></div>
+                <div class="table-details">
+                    Produtividade: {{ goal.productivity_score }} | Pomodoros: {{ goal.pomodoro_count }}
+                </div>
+            </div>
         {% endfor %}
-    </ul>
-{% else %}
-    <p class="text-gray-300">Nenhuma meta encontrada.</p>
-{% endif %}
+    {% else %}
+        <p class="table-empty">Nenhuma meta encontrada.</p>
+    {% endif %}
+</div>
 
 {% endblock %}
 
-</div>
