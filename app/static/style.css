@@ -24,6 +24,7 @@
   --timer-display: #f1f1f1;
 }
 
+
 * {
   margin: 0;
   padding: 0;
@@ -38,6 +39,7 @@ html, body {
   margin: 0;
   padding: 0;
   transition: all 0.3s ease;
+  padding-top: 5.5rem;
 }
 .container {
   background-color: var(--bg-panel);

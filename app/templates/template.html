@@ -7,17 +7,61 @@
     
     <!-- Estilo global -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+          <!--=============== CSS ===============-->
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="/" class="btn-nav">Início</a></li>
-            <li><a href="/login" class="btn-nav">Login</a></li>
-            <li><a href="/account" class="btn-nav">Conta</a></li>
-            <li><a href="/logout" class="btn-nav">Logoff</a></li>
-        </ul>
-    </nav>
+        <header class="header" id="header">
+             <nav class="nav container-nav">
+            <a href="account" class="nav__logo">PyHackDB</a>
+
+            <div class="nav__menu" id="nav-menu">
+               <ul class="nav__list">
+                  <li class="nav__item">
+                     <a href="account" class="nav__link">
+                        <i class="ri-arrow-right-up-line"></i>
+                        <span>Home</span>
+                     </a>
+                  </li>
+
+                  <li class="nav__item">
+                     <a href="#" class="nav__link">
+                        <i class="ri-arrow-right-up-line"></i>
+                        <span>About Us</span>
+                     </a>
+                  </li>
+                  
+                  <li class="nav__item dropdown">
+                     <a href="#" class="nav__link dropdown__toggle">
+                        <i class="ri-arrow-right-up-line"></i>
+                           <span>Projects</span>
+                     </a>
+                  
+                     <ul class="dropdown__menu">
+                        <li><a href="account" class="dropdown__item">SQL Injection</a></li>
+                     </ul>
+                        </li>
+                  
+                  <li class="nav__item">
+                     <a href="logout" class="nav__link">
+                           <i class="ri-arrow-right-up-line"></i>
+                        <span>Logoff</span>
+                     </a>
+                  </li>
+               </ul>
+
+
+            <!-- Toggle button -->
+            <div class="nav__toggle" id="nav-toggle">
+               <i class="ri-menu-line"></i>
+            </div>
+         </nav>
+</header>
+
 
     <center>
         {% block body %}{% endblock %}
@@ -30,5 +74,6 @@
             document.body.setAttribute("data-theme", newTheme);
         }
     </script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
