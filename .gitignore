@@ -55,3 +55,4 @@ Thumbs.db
 */migrations/*.pyc
 */migrations/*.pyo
 */migrations/*.log
+.pyc\n__pycache__/

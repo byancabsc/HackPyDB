@@ -87,6 +87,20 @@ label {
   gap: 15px; /* espaçamento entre os botões */
   margin-top: 10px;
 }
+.btn-secondary {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  background-color: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-hover);
+  color: white;
+}
 
 .toggle-theme {
   margin-top: 20px;
@@ -177,4 +191,26 @@ label {
   color: var(--text-muted);
   margin-top: 20px;
   font-style: italic;
+}
+
+.vuln-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.vuln-link {
+  padding: 12px 24px;
+  background-color: var(--button-bg);
+  color: black;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.vuln-link:hover {
+  background-color: var(--button-hover);
 }
