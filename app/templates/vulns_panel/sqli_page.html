@@ -1,0 +1,19 @@
+{% extends "template.html" %}
+{% block body %}
+
+<h1>SQL Injection</h1>
+
+<section class="actions" style="margin-bottom: 2rem;">
+    <h3>Desafios Disponíveis</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+        <a href="{{ url_for('goals.add_goal') }}" class="submit-btn" style="flex: 1; min-width: 200px;">SQL Server</a>
+        <a href="{{ url_for('todo.adicionar_tarefa') }}" class="submit-btn" style="flex: 1; min-width: 200px;">PostgreSQL</a>
+        <a href="{{ url_for('mission.add_mission') }}" class="submit-btn" style="flex: 1; min-width: 200px;">MySQL</a>
+    </div>
+</section>
+
+<div style="margin-top: rem;">
+    <a href="{{ url_for('auth.account') }}" class="btn-secondary" style="min-width: 20px;">← Voltar</a>
+</div>
+
+{% endblock %}
