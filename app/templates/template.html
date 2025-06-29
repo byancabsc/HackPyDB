@@ -18,12 +18,12 @@
 <body>
         <header class="header" id="header">
              <nav class="nav container-nav">
-            <a href="account" class="nav__logo">PyHackDB</a>
+            <a href="{{url_for('auth.account')}}" class="nav__logo">PyHackDB</a>
 
             <div class="nav__menu" id="nav-menu">
                <ul class="nav__list">
                   <li class="nav__item">
-                     <a href="account" class="nav__link">
+                     <a href="{{url_for('auth.account')}}" class="nav__link">
                         <i class="ri-arrow-right-up-line"></i>
                         <span>Home</span>
                      </a>
@@ -43,7 +43,7 @@
                      </a>
                   
                      <ul class="dropdown__menu">
-                        <li><a href="account" class="dropdown__item">SQL Injection</a></li>
+                        <li><a href="{{url_for('vuln.sqli_page')}}" class="dropdown__item">SQL Injection</a></li>
                      </ul>
                         </li>
                   
