@@ -1,22 +1,35 @@
 {% extends "template.html" %}
 {% block body %}
 
-<h2>Account Page</h2>
-<p>This is the account page!</p>
+<div class="dashboard" style="padding: 2rem; max-width: 900px; margin: auto; font-family: 'Segoe UI', sans-serif;">
+    <h2 style="margin-bottom: 1rem;">Bem-vindo, {{ username }}!</h2>
 
-<div class="container">
-<a href="{{ url_for('goals.add_goal') }}">
-    <button type="submit" class="submit-btn">Pomodoro</button>
-</a>
-<br>
-<a href="{{ url_for('todo.adicionar_tarefa') }}">
-    <button type="submit" class="submit-btn">Check List</button>
-</a>
-<a href="{{ url_for('mission.add_mission') }}">
-    <button type="submit" class="submit-btn">Registrar Missões</button>
-</a>
+    <!-- Estatísticas rápidas -->
+     <!--<section class="stats" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+        <div style="flex: 1; min-width: 200px; background: var(--bg-panel); padding: 1rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+            <strong>Desafios Completos</strong>
+            <p style="font-size: 1.5rem;">3</p>
+        </div>
+        <div style="flex: 1; min-width: 200px; background: var(--bg-panel); padding: 1rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+            <strong>XP Total</strong>
+            <p style="font-size: 1.5rem;">450 XP</p>
+        </div>
+        <div style="flex: 1; min-width: 200px; background: var(--bg-panel); padding: 1rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+            <strong>Último Login</strong>
+            <p style="font-size: 1.1rem;">{{ last_login }}</p>
+        </div>
+    </section> -->
+
+    <!-- Desafios -->
+    <section class="actions" style="margin-bottom: 2rem;">
+        <h3>Desafios Disponíveis</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+            <a href="{{ url_for('goals.add_goal') }}" class="submit-btn" style="flex: 1; min-width: 200px;">SQL Injection</a>
+            <a href="#" class="submit-btn" style="flex: 1; min-width: 200px;">Command Injection</a>
+            <a href="#" class="submit-btn" style="flex: 1; min-width: 200px;">Authentication Bypass</a>
+        </div>
+    </section>
 </div>
-<br>
-<h3>Welcome {{username}}</h3>
+
 
 {% endblock %}

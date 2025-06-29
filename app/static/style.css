@@ -178,3 +178,25 @@ label {
   margin-top: 20px;
   font-style: italic;
 }
+
+.vuln-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.vuln-link {
+  padding: 12px 24px;
+  background-color: var(--button-bg);
+  color: black;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.vuln-link:hover {
+  background-color: var(--button-hover);
+}

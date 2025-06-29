@@ -1,0 +1,22 @@
+{% extends "template.html" %}
+{% block body %}
+
+<h2>Account Page</h2>
+<p>This is the account page!</p>
+
+<div class="container">
+<a href="{{ url_for('goals.add_goal') }}">
+    <button type="submit" class="submit-btn">Pomodoro</button>
+</a>
+<br>
+<a href="{{ url_for('todo.adicionar_tarefa') }}">
+    <button type="submit" class="submit-btn">Check List</button>
+</a>
+<a href="{{ url_for('mission.add_mission') }}">
+    <button type="submit" class="submit-btn">Registrar Missões</button>
+</a>
+</div>
+<br>
+<h3>Welcome {{username}}</h3>
+
+{% endblock %}
