@@ -1,0 +1,143 @@
+/* --- Base do Dashboard --- */
+.user-dashboard {
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+    font-family: 'Share Tech Mono', monospace; /* Mantendo a fonte do seu template.html */
+    color: #ffffff; /* Cor de texto padrão */
+}
+
+.dashboard-title {
+    margin-bottom: 1.5rem; /* Aumentado para melhor espaçamento */
+    color: #38d39f; /* Cor verde para títulos */
+    text-align: center; /* Centralizar título */
+    font-size: 2.2em; /* Tamanho maior para o título principal */
+}
+
+/* --- Seções do Dashboard --- */
+.dashboard-section {
+    margin-bottom: 2.5rem; /* Mais espaçamento entre seções */
+    background-color: #1a1a1a; /* Fundo ligeiramente mais claro para seções */
+    padding: 1.5rem; /* Preenchimento interno */
+    border-radius: 10px; /* Cantos arredondados */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
+}
+
+.section-title {
+    color: #38d39f;
+    margin-bottom: 1.5rem;
+    font-size: 1.8em;
+    border-bottom: 1px solid #38d39f40; /* Linha sutil abaixo do título da seção */
+    padding-bottom: 0.5rem;
+}
+
+/* --- Grid de Estatísticas --- */
+.stats-grid {
+    display: flex;
+    gap: 1.5rem; /* Aumentado o espaçamento entre os cards */
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza os cards quando há espaço */
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 250px; /* Aumentado para melhor legibilidade */
+    background: #1e1e1e; /* Fundo dos cards de estatística */
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    text-align: center; /* Centraliza o texto dentro do card */
+    border: 1px solid #38d39f30; /* Borda sutil */
+}
+
+.stat-card strong {
+    display: block; /* Garante que o strong ocupe sua própria linha */
+    color: #38d39f;
+    font-size: 1.1em;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2.5rem; /* Tamanho maior para os números principais */
+    font-weight: bold;
+    color: #eee;
+}
+
+.stat-value-small {
+    font-size: 1.3rem; /* Tamanho menor para "Último Login" */
+    color: #ccc;
+}
+
+/* --- Grid de Ações/Botões --- */
+.actions-grid {
+    text-align: center; /* Centraliza o título da seção de ações */
+}
+
+.action-buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem; /* Espaçamento entre os botões */
+    margin-top: 1.5rem;
+    justify-content: center; /* Centraliza os botões */
+}
+
+.action-button {
+    flex: 1;
+    min-width: 280px; /* Um pouco maior para botões de ação */
+    max-width: 350px; /* Limite para não ficarem muito grandes em telas largas */
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none; /* Remove bordas padrão */
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.primary-button {
+    background-color: #38d39f;
+    color: #121212;
+}
+
+.primary-button:hover {
+    background-color: #2ecb8a;
+    transform: translateY(-2px); /* Pequeno efeito de levantamento */
+}
+
+.secondary-button {
+    background-color: #2a2a2a;
+    color: #38d39f;
+    border: 1px solid #38d39f;
+}
+
+.secondary-button:hover {
+    background-color: #38d39f;
+    color: #121212;
+    transform: translateY(-2px);
+}
+
+/* --- Responsividade Básica (Opcional) --- */
+@media (max-width: 768px) {
+    .user-dashboard {
+        padding: 1rem;
+    }
+
+    .dashboard-title {
+        font-size: 1.8em;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
+
+    .stat-card, .action-button {
+        min-width: 100%; /* Ocupa a largura total em telas menores */
+    }
+
+    .stats-grid, .action-buttons-container {
+        flex-direction: column; /* Empilha os itens verticalmente */
+        align-items: center; /* Centraliza os itens empilhados */
+    }
+}

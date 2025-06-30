@@ -1,0 +1,38 @@
+{% extends "template.html" %}
+
+{% block body %}
+<main class="about-us-container">
+    <section class="about-section">
+        <h1 class="section-title">Sobre o PyHackDB</h1>
+        <p class="about-description">
+            O PyHackDB é um laboratório interativo de Capture The Flag (CTF) e segurança cibernética,
+            dedicado a fornecer um ambiente prático para o aprendizado e aprimoramento de habilidades em segurança ofensiva.
+            Aqui, você pode explorar vulnerabilidades reais, resolver desafios e subir no ranking,
+            aprofundando seu conhecimento em um ambiente seguro e controlado.
+        </p>
+    </section>
+
+    <section class="creators-section">
+        <h2 class="section-title">Nossos Criadores</h2>
+        
+        <div class="creator-card">
+            <img src="{{ url_for('static', filename='images/gabriel.jpg') }}" alt="Foto de Gabriel Won-Held" class="creator-photo">
+            <h3>Gabriel Won-Held</h3>
+            <p>Desenvolvedor principal, atua na área de segurança cibernética.</p>
+            <div class="creator-links">
+                <a href="https://github.com/gabrielwonheld" target="_blank" rel="noopener noreferrer" class="creator-link github">
+                    <i class="ri-github-fill"></i> GitHub
+                </a>
+                <a href="https://www.instagram.com/gabrielwonheld/" target="_blank" rel="noopener noreferrer" class="creator-link instagram">
+                    <i class="ri-instagram-line"></i> Instagram
+                </a>
+                <a href="https://www.linkedin.com/in/gabriel-won-held-b5a034237/" target="_blank" rel="noopener noreferrer" class="creator-link linkedin">
+                    <i class="ri-linkedin-fill"></i> LinkedIn
+                </a>
+            </div>
+        </div>
+
+        
+    </section>
+</main>
+{% endblock %}

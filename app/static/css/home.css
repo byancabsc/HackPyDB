@@ -1,0 +1,214 @@
+/* ESTILOS DA SEÇÃO HERO ESPECÍFICA DA HOME */
+.hero-section {
+    background-color: #1a1a1a;
+    padding: 60px 20px; /* Aumentado padding para mais impacto */
+    text-align: center;
+    color: #fff;
+    border-bottom: 1px solid #38d39f30; /* Linha sutil na parte inferior */
+}
+
+.hero-title {
+    font-size: 3em; /* Tamanho maior para o título principal da home */
+    color: #38d39f;
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+.hero-subtitle {
+    font-size: 1.3em; /* Tamanho da fonte da descrição */
+    color: #ccc;
+    margin-bottom: 2.5rem;
+    max-width: 700px; /* Limita a largura do parágrafo */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-cta-buttons {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Espaçamento entre os botões */
+    flex-wrap: wrap; /* Permite que os botões quebrem linha */
+}
+
+.hero-button {
+    padding: 12px 28px; /* Preenchimento generoso */
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.2s ease-in-out;
+    font-size: 1.1em;
+}
+
+.hero-button.primary {
+    background-color: #38d39f;
+    color: #121212;
+    border: none;
+}
+
+.hero-button.primary:hover {
+    background-color: #2ecb8a;
+    transform: translateY(-3px); /* Efeito de elevação */
+    box-shadow: 0 5px 15px rgba(56, 211, 159, 0.3);
+}
+
+.hero-button.secondary {
+    background-color: transparent;
+    color: #38d39f;
+    border: 2px solid #38d39f;
+}
+
+.hero-button.secondary:hover {
+    background-color: #38d39f;
+    color: #121212;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(56, 211, 159, 0.3);
+}
+
+/* RESPONSIVIDADE PARA A SEÇÃO HERO */
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: 2.2em;
+    }
+    .hero-subtitle {
+        font-size: 1em;
+    }
+    .hero-cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-button {
+        width: 80%; /* Botões mais largos em telas pequenas */
+        max-width: 300px;
+    }
+}
+
+
+/* --- COMEÇO DOS ESTILOS QUE ESTAVAM FALTANDO NO SEU home.css --- */
+
+/* ESTILOS GLOBAIS - Movemos do HTML para cá (adaptado para o home.css) */
+body { /* Se o estilo do body estiver no template.html via data-theme, este pode ser ignorado ou complementar */
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace;
+  background-color: #121212; /* Ajuste se o template.html tiver um data-theme que mude isso */
+  color: #ffffff;
+}
+
+/* Os estilos do header e nav que você tinha aqui, já devem estar no seu static/CSS/navbar.css ou no template.html se forem diferentes.
+   NÃO OS COLOQUE AQUI NOVAMENTE se já estiverem em outro lugar e funcionando. */
+
+/* ESTILOS DE SEÇÕES GERAIS */
+main { /* Estilo para a tag main adicionada no template.html, se o Flask App usa o template com <main> */
+    max-width: 1200px; /* Limite a largura do conteúdo principal */
+    margin: 0 auto; /* Centraliza a main */
+}
+
+section {
+  padding: 60px 40px;
+}
+
+.section-title { /* Novo estilo para títulos de seção */
+  color: #38d39f;
+  text-align: center;
+  margin-bottom: 2.5rem; /* Espaçamento abaixo do título */
+  font-size: 2em;
+}
+
+/* ESTILOS DE CARDS */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background-color: #1e1e1e;
+  border: 1px solid #38d39f30;
+  border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  text-align: center; /* Centraliza o texto nos cards */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra para profundidade */
+}
+
+.card h3 {
+  color: #38d39f;
+  margin-bottom: 10px;
+  font-size: 1.5em;
+}
+
+.card p {
+    font-size: 0.95em;
+    color: #ccc;
+}
+
+/* ESTILOS DA LEADERBOARD */
+.leaderboard-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #1e1e1e; /* Fundo da tabela */
+  border-radius: 10px;
+  overflow: hidden; /* Garante que as bordas arredondadas funcionem com bordas de célula */
+}
+
+.leaderboard-section th, .leaderboard-section td {
+  border: 1px solid #38d39f30;
+  padding: 12px;
+  text-align: left;
+}
+
+.leaderboard-section th {
+  background-color: #1e1e1e; /* Fundo do cabeçalho da tabela */
+  color: #38d39f;
+  font-size: 1.1em;
+}
+
+.leaderboard-section tr:nth-child(even) { /* Estilo para linhas alternadas */
+    background-color: #161616;
+}
+
+.leaderboard-section tr:hover { /* Efeito hover na linha */
+    background-color: #282828;
+}
+
+/* ESTILOS DO FOOTER */
+footer { /* Se você moveu o footer para o home.html, estes estilos são necessários aqui */
+  background-color: #0d0d0d;
+  padding: 30px;
+  text-align: center;
+  color: #888;
+  font-size: 0.9em;
+  border-top: 2px solid #38d39f;
+  margin-top: 50px; /* Adiciona espaço acima do footer */
+}
+
+footer a {
+  color: #38d39f;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #2ecb8a;
+}
+
+/* RESPONSIVIDADE BÁSICA */
+@media (max-width: 768px) {
+    section {
+        padding: 40px 20px;
+    }
+    .section-title {
+        font-size: 1.8em;
+    }
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 100%;
+        max-width: 300px;
+    }
+}

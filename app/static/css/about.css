@@ -1,0 +1,130 @@
+/* static/CSS/about.css */
+
+.about-us-container {
+    padding: 3rem 2rem;
+    max-width: 900px;
+    margin: auto;
+    font-family: 'Share Tech Mono', monospace;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+.about-section, .creators-section {
+    background-color: #1a1a1a;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-bottom: 3rem;
+    text-align: center; /* Centraliza o conteúdo da seção */
+}
+
+.about-description {
+    font-size: 1.1em;
+    max-width: 700px;
+    margin: 1.5rem auto 0 auto;
+    color: #ccc;
+}
+
+/* Estilos de Card de Criador */
+.creators-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.creator-card {
+    background-color: #1e1e1e;
+    border: 1px solid #38d39f30;
+    border-radius: 10px;
+    padding: 1.5rem;
+    width: 280px; /* Largura fixa para os cards */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.creator-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.creator-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%; /* Torna a imagem circular */
+    object-fit: cover; /* Garante que a imagem preencha o círculo */
+    border: 3px solid #38d39f;
+    margin-bottom: 1rem;
+    display: block; /* Remove espaço extra abaixo da imagem */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.creator-card h3 {
+    color: #38d39f;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.6em;
+}
+
+.creator-card p {
+    font-size: 0.95em;
+    color: #aaa;
+    margin-bottom: 1.5rem;
+}
+
+.creator-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.creator-link {
+    display: inline-flex; /* Para alinhar ícone e texto */
+    align-items: center;
+    gap: 0.4rem;
+    background-color: #2a2a2a;
+    color: #38d39f;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: 1px solid #38d39f50;
+}
+
+.creator-link:hover {
+    background-color: #38d39f;
+    color: #121212;
+}
+
+.creator-link i {
+    font-size: 1.1em;
+}
+
+/* Reutilizando section-title (já deve estar em style.css ou home.css) */
+/* .section-title {
+    color: #38d39f;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2.2em;
+    border-bottom: 1px solid #38d39f40;
+    padding-bottom: 0.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+} */
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .about-us-container {
+        padding: 2rem 1rem;
+    }
+    .creator-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}

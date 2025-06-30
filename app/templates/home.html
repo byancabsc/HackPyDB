@@ -1,5 +1,96 @@
-{% extends "template.html" %} {% block body %}
+{% extends "template.html" %}
 
+{% block body %}
 
+  <section class="hero-section"> {# Usaremos uma classe para estilizar #}
+    <h1 class="hero-title">
+        Bem-vindo ao PyHackDB
+    </h1>
+    <p class="hero-subtitle">
+        Laboratório de CTF focado em segurança ofensiva e desafios práticos.
+    </p>
+    <div class="hero-cta-buttons">
+        <a href="#desafios" class="hero-button primary">
+        Ver Desafios
+        </a>
+
+        <a href="{{ url_for('auth.register') }}" class="hero-button secondary">
+        Registrar-se
+        </a>
+    </div>
+    </section>
+
+  <section id="desafios" class="challenges-section">
+    <h2 class="section-title">Desafios em Destaque</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>SQL Injection 01</h3>
+        <p>Explore uma falha de autenticação e acesse dados escondidos.</p>
+        <p><strong>Dificuldade:</strong> Fácil</p>
+      </div>
+      <div class="card">
+        <h3>Command Injection</h3>
+        <p>Explore uma falha de segurança e execute comandos ocultos.</p>
+        <p><strong>Dificuldade:</strong> Médio</p>
+      </div>
+      <div class="card">
+        <h3>Authentication Bypass</h3>
+        <p>Explore uma falha de autenticação e contorne o login.</p>
+        <p><strong>Dificuldade:</strong> Difícil</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="placar" class="leaderboard-section">
+    <h2 class="section-title">Ranking de Jogadores</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Usuário</th>
+          <th>Pontuação</th>
+          <th>Desafios Resolvidos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0xBya</td>
+          <td>920 pts</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>WH_:P</td>
+          <td>850 pts</td>
+          <td>11</td>
+        </tr>
+        <tr>
+          <td>Fulano</td>
+          <td>730 pts</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="recursos" class="news-section">
+    <h2 class="section-title">Novidades & Atualizações</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>[29/07] Novo desafio: SQLi Avançado</h3>
+        <p>Testa tua capacidade de manipular queries e escapar de filtros.</p>
+      </div>
+      <div class="card">
+        <h3>[01/08] Evento Capture The Flag - Agosto</h3>
+        <p>Prepare-se para competir com outros hackers! Link do evento no nosso instagram @PyHackDB.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="about-section">
+    <h2 class="section-title">Sobre o PyHackDB</h2>
+    <p>
+      PyHackDB é um laboratório de segurança cibernética criado para entusiastas, estudantes e profissionais de pentest.
+      Aqui você aprende na prática, resolve desafios reais e sobe no ranking. A segurança começa pelo conhecimento — comece agora!
+    </p>
+  </section>
 
 {% endblock %}

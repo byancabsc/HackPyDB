@@ -1,35 +1,31 @@
 {% extends "template.html" %}
+
 {% block body %}
+<main class="user-dashboard">
+    <h2 class="dashboard-title">Bem-vindo, {{ username }}!</h2>
 
-<div class="dashboard" style="padding: 2rem; max-width: 900px; margin: auto; font-family: 'Segoe UI', sans-serif;">
-    <h2 style="margin-bottom: 1rem;">Bem-vindo, {{ username }}!</h2>
-
-    <!-- Estatísticas rápidas -->
-     <!--<section class="stats" style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
-        <div style="flex: 1; min-width: 200px; background: var(--bg-panel); padding: 1rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+    <section class="dashboard-section stats-grid">
+        <div class="stat-card">
             <strong>Desafios Completos</strong>
-            <p style="font-size: 1.5rem;">3</p>
+            <p class="stat-value">{{ completed_challenges | default(0) }}</p> {# Usar um valor padrão caso não venha do backend #}
         </div>
-        <div style="flex: 1; min-width: 200px; background: var(--bg-panel); padding: 1rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+        <div class="stat-card">
             <strong>XP Total</strong>
-            <p style="font-size: 1.5rem;">450 XP</p>
+            <p class="stat-value">{{ total_xp | default(0) }} XP</p> {# Usar um valor padrão caso não venha do backend #}
         </div>
-        <div style="flex: 1; min-width: 200px; background: var(--bg-panel); padding: 1rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+        <div class="stat-card">
             <strong>Último Login</strong>
-            <p style="font-size: 1.1rem;">{{ last_login }}</p>
-        </div>
-    </section> -->
-
-    <!-- Desafios -->
-    <section class="actions" style="margin-bottom: 2rem;">
-        <h3>Desafios Disponíveis</h3>
-        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
-            <a href="{{ url_for('vuln.sqli_page') }}" class="submit-btn" style="flex: 1; min-width: 200px;">SQL Injection</a>
-            <a href="#" class="submit-btn" style="flex: 1; min-width: 200px;">Command Injection</a>
-            <a href="#" class="submit-btn" style="flex: 1; min-width: 200px;">Authentication Bypass</a>
+            <p class="stat-value-small">{{ last_login | default('N/A') }}</p> {# Usar um valor padrão caso não venha do backend #}
         </div>
     </section>
-</div>
 
-
+    <section class="dashboard-section actions-grid">
+        <h3 class="section-title">Desafios Disponíveis</h3>
+        <div class="action-buttons-container">
+            <a href="{{ url_for('vuln.sqli_page') }}" class="action-button primary-button">SQL Injection</a>
+            <a href="#" class="action-button secondary-button">Command Injection</a>
+            <a href="#" class="action-button secondary-button">Authentication Bypass</a>
+        </div>
+    </section>
+</main>
 {% endblock %}
