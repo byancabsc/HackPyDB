@@ -6,5 +6,4 @@ home_bp = Blueprint('home_blueprint', __name__) # Mudei o nome do Blueprint para
 
 @home_bp.route("/")
 def home():
-    # Agora, em vez de redirecionar para o login, ele vai renderizar a home.html
     return render_template('home.html')
